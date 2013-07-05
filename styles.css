@@ -1,0 +1,64 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	/*background: #11827E;*/
+}
+body {
+	font-family: monospace;
+	background: #000;
+}
+
+/*
+#teamug {
+	position: absolute;
+	bottom: 3em;
+	left: 2em;
+	width: 279px;
+	height: 277px;
+}
+*/
+#teamug {
+	position: absolute;
+	top: 0;
+	left: 50%;
+}
+
+#teaHolder {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+#guide {
+	position: absolute;
+	left: 1%;
+	top: 1%;
+	color: #f9f9f9;
+}
+#title {
+	position: absolute;
+	right: 1%;
+	top: 1%;
+	color: #f9f9f9;
+	text-align: right;
+}
+#title h1 { margin: 0; }
+#author {
+	position: absolute;
+	right: 1%;
+	bottom: 1%;
+	color: #f9f9f9;
+}
+#author a {
+	color: #22dddd;
+	text-decoration: none;
+}
+#license {
+	position: absolute;
+	left: 1%;
+	bottom: 1%;
+	color: #f9f9f9;
+}

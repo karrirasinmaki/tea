@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+
+<title>title</title>
+
+<meta name="description" content="" >
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+</head>
+
+
+<body>
+<!--
+<div id="teamug">
+	<img src="img/teamug.png" />
+</div>
+-->
+<div id="teamug">.</div>
+
+<div id="teaHolder">
+	<canvas id="tea">
+		Ei tukea canvasille
+	</canvas>
+
+	<div id="guide">
+		Click to explode tea leaves<br>
+		Click also changes color of future leaves<br>
+		Hit spacebar to make leaves move slow/fast<br><br>
+		Enjoy ;)
+	</div>
+
+	<div id="title">
+		<h1>Tea Leaves</h1>
+		a tiny canvas particle system
+	</div>
+
+	<div id="author">
+		<a href="http://twitter.com/karrirasinmaki">@karrirasinmaki</a>
+	</div>
+
+	<div id="license">
+		This little app is fully open source<br>
+		Use, share, modify, sell and do everything as much as you like<br>
+		It wouldn't hurt to mention me :) 
+	</div>
+</div>
+
+
+<script type="text/javascript" src="MakeSomeTea.js"></script>
+<script>
+	var followMouse = true;
+	var colorList = [
+		["#cedece","#eedccc","#22dddd"],// Interesting...
+		["#be7373","#73be73","#7373be"],// Nice RGB
+		["#f9f9f9","#cdeede","#bebebe"],// Whites
+		["#f566aa","#420000","#d39182"],// Reds
+		["#73C8A9","#E1B866","#373B44", "#DEE1B6"], // Soft
+		["#420000","#004200","#000042"]// Dark RGB
+	];
+
+	window.onload = function(e) {
+		document.getElementById("tea").width = window.innerWidth;
+		document.getElementById("tea").height = window.innerHeight;
+
+		Tea.canvasId = "tea";
+		Tea.colors = {mix: false, color: colorList[0]};
+		Tea.power = {a0:30, a1:150, F:1};
+		Tea.autoDie = 140;
+		Tea.borders.bottom = true;
+		Tea.makeSome();
+
+		document.onmousemove = function(e) {
+			if(followMouse) {
+				Tea.gravity.x = e.pageX;
+				Tea.gravity.y = e.pageY;
+			}
+		};
+
+		document.onclick = function(e) {
+			Tea.gravity.x = e.pageX;
+			Tea.gravity.y = e.pageY;
+			Tea.explode = 15;
+
+			Tea.colors.color = colorList[Math.round(Math.random()*(colorList.length-1) )];
+		};
+
+		var oldMaxSpeed = Tea.maxSpeed;
+		document.onkeydown = function(e) {
+			// Spacebar
+			if(e.keyCode == 32) {
+				if(Tea.maxSpeed != oldMaxSpeed)
+					Tea.maxSpeed = oldMaxSpeed;
+				else
+					Tea.maxSpeed = 2;
+			}
+		};
+		/*
+		document.onkeyup = function(e) {
+			// Spacebar
+			if(e.keyCode == 32) {
+				Tea.maxSpeed = oldMaxSpeed;
+			}
+		};
+		*/
+	}
+</script>
+
+
+</body>
+</html>
